@@ -5,7 +5,7 @@ local StarterGui = game:GetService("StarterGui")
 local TweenService = game:GetService("TweenService")
 
 local keyURL = "https://pastebin.com/raw/yH0MYCXP"
-local hwidWhitelistURL = "https://raw.githubusercontent.com/DyyITT/Delta/refs/heads/main/hwid"
+local hwidWhitelistURL = "https://pastebin.com/raw/k7jy7Z1w"
 local checkpointVersion = "v2"
 local checkpointFile = "sansmoba_key_checkpoint_" .. checkpointVersion .. ".txt"
 local hwid = tostring(player.UserId)
@@ -447,7 +447,8 @@ local function showExecutor()
         ["Grow a Tree"] = "Games",
         ["Yard Sale"] = "Games",
         ["Breeding Ranch"] = "Games",
-        ["PLS DONATE"] = "Games"
+        ["PLS DONATE"] = "Games",
+        ["Trollge Multiverse"] = "Games"
     }
     
     -- Container untuk kategori
@@ -1011,6 +1012,7 @@ local function showExecutor()
         {name = "Yard Sale", desc = "For Yard Sale Game", script = 'https://raw.githubusercontent.com/gumanba/Scripts/main/YardSale'},
         {name = "Breeding Ranch", desc = "For Breeding Ranch Game", script = 'https://raw.githubusercontent.com/gumanba/Scripts/main/Breedingranch'},
         {name = "PLS DONATE", desc = "For PLS DONATE Game", script = 'https://raw.githubusercontent.com/Vax3478/Vax/refs/heads/main/PLSDONATESCRIPT-DASH'},
+        {name = "Trollge Multiverse", desc = "For Trollge Multiverse Game", script = 'https://rawscripts.net/raw/Update-Trollge-Multiverse-auto-farm-32870'},
     }
     
     -- Add all scripts to UI
