@@ -5,7 +5,7 @@ local StarterGui = game:GetService("StarterGui")
 local TweenService = game:GetService("TweenService")
 
 local keyURL = "https://pastebin.com/raw/yH0MYCXP"
-local hwidWhitelistURL = "https://pastebin.com/raw/k7jy7Z1w"
+local hwidWhitelistURL = "https://raw.githubusercontent.com/DyyITT/Delta/refs/heads/main/hwid"
 local checkpointVersion = "v2"
 local checkpointFile = "sansmoba_key_checkpoint_" .. checkpointVersion .. ".txt"
 local hwid = tostring(player.UserId)
