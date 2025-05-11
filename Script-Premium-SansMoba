@@ -1,19 +1,19 @@
 --[[
-    SansMoba Verifikasi UI - Rainbow Edition
-    Dibuat oleh ChatGPT khusus buat Zirga
+    SansMoba Verifikasi UI - Gradient Rainbow Flow Edition
+    Dibuat khusus buat Zirga
 --]]
 
 local TweenService = game:GetService("TweenService")
 local PlayerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Fungsi Rainbow Loop
-local function RainbowLoop(obj, prop)
+-- Fungsi Rainbow Gradasi
+local function RainbowLoop(obj, prop, offset)
 	task.spawn(function()
+		local t = offset or 0
 		while obj and obj.Parent do
-			for i = 0, 1, 0.01 do
-				obj[prop] = Color3.fromHSV(i, 1, 1)
-				wait(0.03)
-			end
+			local color = Color3.fromHSV((tick() * 0.15 + t) % 1, 1, 1)
+			obj[prop] = color
+			wait(0.03)
 		end
 	end)
 end
@@ -36,7 +36,7 @@ Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 14)
 local stroke = Instance.new("UIStroke", frame)
 stroke.Thickness = 2.5
 stroke.Transparency = 0.15
-RainbowLoop(stroke, "Color")
+RainbowLoop(stroke, "Color", 0)
 
 -- Drop Shadow
 local shadow = Instance.new("ImageLabel", frame)
@@ -68,10 +68,10 @@ title.Text = "Verifikasi Akses SansMoba"
 title.Font = Enum.Font.GothamSemibold
 title.TextSize = 22
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
-RainbowLoop(title, "TextColor3")
+RainbowLoop(title, "TextColor3", 0.2)
 
 -- Fungsi Tombol
-local function createButton(text, posY, callback)
+local function createButton(text, posY, callback, rainbowOffset)
 	local btn = Instance.new("TextButton", frame)
 	btn.Size = UDim2.new(0, 300, 0, 48)
 	btn.Position = UDim2.new(0.5, -150, 0, posY)
@@ -87,8 +87,9 @@ local function createButton(text, posY, callback)
 	local stroke = Instance.new("UIStroke", btn)
 	stroke.Thickness = 1.5
 	stroke.Transparency = 0.2
-	RainbowLoop(stroke, "Color")
-	RainbowLoop(btn, "TextColor3")
+
+	RainbowLoop(btn, "TextColor3", rainbowOffset)
+	RainbowLoop(stroke, "Color", rainbowOffset + 0.3)
 
 	-- Hover effect
 	btn.MouseEnter:Connect(function()
@@ -110,11 +111,11 @@ local function createButton(text, posY, callback)
 	end)
 end
 
--- Tombol Verifikasi
+-- Tombol Verifikasi dengan offset gradasi berbeda
 createButton("Verifikasi via HWID", 130, function()
 	loadstring(game:HttpGet("https://pastebin.com/raw/NtXn6BKq"))()
-end)
+end, 0.5)
 
 createButton("Verifikasi via UserId", 190, function()
 	loadstring(game:HttpGet("https://pastebin.com/raw/Qy9ymbCd"))()
-end)
+end, 1.0)
