@@ -64,7 +64,7 @@ local title = Instance.new("TextLabel", frame)
 title.Size = UDim2.new(1, 0, 0, 36)
 title.Position = UDim2.new(0, 0, 0, 80)
 title.BackgroundTransparency = 1
-title.Text = "Verifikasi Akses SansMoba"
+title.Text = "Verifikasi SansMoba"
 title.Font = Enum.Font.GothamSemibold
 title.TextSize = 22
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -112,10 +112,10 @@ local function createButton(text, posY, callback, rainbowOffset)
 end
 
 -- Tombol Verifikasi dengan offset gradasi berbeda
-createButton("Verifikasi via HWID", 130, function()
+createButton("HWID", 130, function()
 	loadstring(game:HttpGet("https://pastebin.com/raw/NtXn6BKq"))()
 end, 0.5)
 
-createButton("Verifikasi via UserId", 190, function()
+createButton("UserId", 190, function()
 	loadstring(game:HttpGet("https://pastebin.com/raw/Qy9ymbCd"))()
 end, 1.0)
