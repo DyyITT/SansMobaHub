@@ -1,1 +1,49 @@
-loadstring(game:HttpGet('https://pastebin.com/raw/Qy9ymbCd'))()
+-- GUI Pilihan HWID atau UserId
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local HWIDButton = Instance.new("TextButton")
+local UserIdButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+
+-- Parent ke PlayerGui
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Name = "OptionGUI"
+ScreenGui.ResetOnSpawn = false
+
+-- Frame utama
+Frame.Parent = ScreenGui
+Frame.Size = UDim2.new(0, 250, 0, 120)
+Frame.Position = UDim2.new(0.5, -125, 0.5, -60)
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+UICorner.Parent = Frame
+
+-- Tombol HWID
+HWIDButton.Parent = Frame
+HWIDButton.Size = UDim2.new(0, 220, 0, 40)
+HWIDButton.Position = UDim2.new(0, 15, 0, 10)
+HWIDButton.Text = "HWID"
+HWIDButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+HWIDButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+HWIDButton.Font = Enum.Font.Gotham
+HWIDButton.TextSize = 18
+
+-- Tombol UserId
+UserIdButton.Parent = Frame
+UserIdButton.Size = UDim2.new(0, 220, 0, 40)
+UserIdButton.Position = UDim2.new(0, 15, 0, 65)
+UserIdButton.Text = "UserId"
+UserIdButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+UserIdButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+UserIdButton.Font = Enum.Font.Gotham
+UserIdButton.TextSize = 18
+
+-- Fungsi saat tombol ditekan
+HWIDButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+    loadstring(game:HttpGet('https://pastebin.com/raw/NtXn6BKq'))()
+end)
+
+UserIdButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+    loadstring(game:HttpGet('https://pastebin.com/raw/Qy9ymbCd'))()
+end)
