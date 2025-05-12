@@ -48,7 +48,7 @@ for line in data:gmatch("[^\r\n]+") do
     end
 end
 
--- Jika tidak cocok, tampilkan GUI notifikasi
+-- Jika tidak cocok, tampilkan GUI notifikasi keren
 if not found then
     warn("Gagal cocokkan ID atau data sudah expired.")
 
@@ -58,23 +58,62 @@ if not found then
     screenGui.ResetOnSpawn = false
     screenGui.Parent = player:WaitForChild("PlayerGui")
 
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Size = UDim2.new(0.5, 0, 0.1, 0)
-    textLabel.Position = UDim2.new(0.25, 0, 0.45, 0)
-    textLabel.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
-    textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    textLabel.Font = Enum.Font.SourceSansBold
-    textLabel.TextScaled = true
-    textLabel.Text = "Akses ditolak! ID tidak cocok atau sudah expired"
-    textLabel.Parent = screenGui
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.4, 0, 0.2, 0)
+    frame.Position = UDim2.new(0.3, 0, 0.4, 0)
+    frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    frame.BackgroundTransparency = 1
+    frame.BorderSizePixel = 0
+    frame.Parent = screenGui
 
-    local corner = Instance.new("UICorner", textLabel)
-    corner.CornerRadius = UDim.new(0, 8)
+    local blur = Instance.new("UIGradient", frame)
+    blur.Rotation = 90
+    blur.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 80, 80)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 40, 40))
+    }
 
-    local stroke = Instance.new("UIStroke", textLabel)
-    stroke.Thickness = 2
+    local stroke = Instance.new("UIStroke", frame)
     stroke.Color = Color3.fromRGB(255, 255, 255)
+    stroke.Thickness = 1.5
+    stroke.Transparency = 1
 
+    local corner = Instance.new("UICorner", frame)
+    corner.CornerRadius = UDim.new(0, 12)
+
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, 0, 0.4, 0)
+    title.Position = UDim2.new(0, 0, 0, 0)
+    title.BackgroundTransparency = 1
+    title.Text = "Akses Ditolak!"
+    title.Font = Enum.Font.GothamBlack
+    title.TextColor3 = Color3.fromRGB(255, 80, 80)
+    title.TextScaled = true
+    title.TextTransparency = 1
+    title.Parent = frame
+
+    local desc = Instance.new("TextLabel")
+    desc.Size = UDim2.new(1, -20, 0.4, 0)
+    desc.Position = UDim2.new(0, 10, 0.5, 0)
+    desc.BackgroundTransparency = 1
+    desc.Text = "USERID/HWID tidak terdaftar atau masa akses sudah habis."
+    desc.Font = Enum.Font.Gotham
+    desc.TextColor3 = Color3.fromRGB(255, 255, 255)
+    desc.TextScaled = true
+    desc.TextWrapped = true
+    desc.TextTransparency = 1
+    desc.Parent = frame
+
+    -- Animasi Fade In
+    for i = 1, 10 do
+        frame.BackgroundTransparency = 1 - (i * 0.07)
+        stroke.Transparency = 1 - (i * 0.07)
+        title.TextTransparency = 1 - (i * 0.1)
+        desc.TextTransparency = 1 - (i * 0.1)
+        task.wait(0.03)
+    end
+
+    -- Hapus GUI setelah 5 detik
     task.delay(5, function()
         screenGui:Destroy()
     end)
