@@ -63,4 +63,4 @@ function ShowErrorUI(msg)
 end
 
 --// Contoh pemanggilan otomatis
-ShowErrorUI("Server sedang gangguan")
+ShowErrorUI("Server sedang gangguan...")
